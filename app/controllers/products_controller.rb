@@ -14,11 +14,13 @@ class ProductsController < ApplicationController
   end
 
   def create
+    message_notice = "Tu producto se ha creado correctamente"
+
     @product = Product.new(
       product_params
     )
 
-    return redirect_to products_path if @product.save
+    return redirect_to products_path, notice: message_notice if @product.save
 
     render :new, status: :unprocessable_entity
   end
