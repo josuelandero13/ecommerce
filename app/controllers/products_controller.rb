@@ -8,4 +8,8 @@ class ProductsController < ApplicationController
       params[:id]
     )
   end
+
+  def new
+    @product = Product.new
+  end
 end
