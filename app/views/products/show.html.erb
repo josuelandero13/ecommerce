@@ -1,8 +1,10 @@
-<h1 class="title"><%= @product.title %></h1>
+<%= image_tag @product&.photo, width: 300 if @product&.photo.attached? %>
 
-<p class="description"><%= @product.description %></p>
+<h1 class="title"><%= @product&.title %></h1>
 
-<span class="price"><%= @product.price %></span>
+<p class="description"><%= @product&.description %></p>
+
+<span class="price"><%= @product&.price %></span>
 
 <%= link_to "Editar producto", edit_product_path(@product) %>
 

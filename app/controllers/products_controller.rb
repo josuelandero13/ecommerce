@@ -14,13 +14,13 @@ class ProductsController < ApplicationController
   end
 
   def create
-    message_notice = "Tu producto se ha creado correctamente"
+    message_create = "Tu producto se ha creado correctamente"
 
     @product = Product.new(
       product_params
     )
 
-    return redirect_to products_path, notice: message_notice if @product.save
+    return redirect_to products_path, notice: message_create if @product.save
 
     render :new, status: :unprocessable_entity
   end
@@ -58,7 +58,7 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(
-      :title, :description, :price
+      :title, :description, :price, :photo
     )
   end
 end
