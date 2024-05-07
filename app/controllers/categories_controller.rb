@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   def index
-    @categories = Category.all
+    @categories = Category.all.order(name: :asc)
   end
 
   def new
@@ -15,13 +15,13 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
 
     return redirect_to categories_url, notice: t(".created") if @category.save
-    
+
     render :new, status: :unprocessable_entity
   end
 
   def update
     return redirect_to categories_url, notice: t(".updated") if category.update(category_params)
-    
+
     render :edit, status: :unprocessable_entity
   end
 

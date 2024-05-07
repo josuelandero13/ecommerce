@@ -2,12 +2,12 @@
   <% @product&.errors&.full_messages.each do |error| %>
     <%= error %>
   <% end %>
-  
+
   <div>
     <%= form.label :title %>
     <%= form.text_field :title %>
   </div>
-  
+
   <div>
     <%= form.label :description %>
     <%= form.text_field :description %>
@@ -16,6 +16,13 @@
   <div>
     <%= form.label :price %>
     <%= form.text_field :price %>
+  </div>
+
+  <div>
+    <%=
+      form.collection_select :category_id,
+      Category.all.order(name: :asc), :id, :name
+    %>
   </div>
 
   <div>
