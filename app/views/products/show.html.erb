@@ -10,5 +10,5 @@
 
 <%= link_to "Eliminar producto", product_path(@product), data: {
   turbo_method: :delete,
-  turbo_confirm: "¿Estas seguro?"
+  turbo_confirm: t("common.confirm")
 } %>

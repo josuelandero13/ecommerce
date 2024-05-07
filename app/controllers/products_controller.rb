@@ -1,12 +1,10 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
+    @products = Product.all.with_attached_photo
   end
 
   def show
-    @product = Product.find(
-      params[:id]
-    )
+    product
   end
 
   def new
@@ -14,44 +12,29 @@ class ProductsController < ApplicationController
   end
 
   def create
-    message_create = "Tu producto se ha creado correctamente"
-
     @product = Product.new(
       product_params
     )
 
-    return redirect_to products_path, notice: message_create if @product.save
+    return redirect_to products_path, notice: t(".created") if @product.save
 
     render :new, status: :unprocessable_entity
   end
 
   def edit
-    @product = Product.find(
-      params[:id]
-    )
+    product
   end
 
   def update
-    message_update = "Tu producto se ha actualizado correctamente"
-
-    @product = Product.find(
-      params[:id]
-    )
-
-    return redirect_to products_path, notice: message_update if @product.update(product_params)
+    return redirect_to products_path, notice: t(".updated") if product.update(product_params)
 
     render :edit, status: :unprocessable_entity
   end
 
   def destroy
-    message_destroy = "Tu producto se ha eliminado correctamente"
-
-    @product = Product.find(
-      params[:id]
-    )
-
-    @product.destroy
-    redirect_to products_path, notice: message_destroy, status: :see_other
+    product.destroy
+  
+    redirect_to products_path, notice: t(".destroyed"), status: :see_other
   end
 
   private
@@ -60,5 +43,11 @@ class ProductsController < ApplicationController
     params.require(:product).permit(
       :title, :description, :price, :photo
     )
+  end
+
+  def product
+    @product = Product.find(
+      params[:id]
+    )    
   end
 end
