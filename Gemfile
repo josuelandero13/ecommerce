@@ -44,6 +44,9 @@ gem "bootsnap", require: false
 # PgSearch crea ámbitos con nombre que aprovechan la búsqueda de texto completo de PostgreSQL
 gem 'pg_search'
 
+# Pagination
+gem 'pagy', '~> 8.4'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
