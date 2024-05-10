@@ -59,7 +59,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "allows to update a product" do
-    patch product_path(products(:ps4)), params: { 
+    patch product_path(products(:ps4)), params: {
       product: {
         price: 120
       }
@@ -70,7 +70,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "does not allow to update a product with an invalid field" do
-    patch product_path(products(:ps4)), params: { 
+    patch product_path(products(:ps4)), params: {
       product: {
         price: nil
       }
@@ -83,7 +83,7 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_difference("Product.count", -1) do
       delete product_path(products(:ps4))
     end
-    
+
     assert_redirected_to products_path
     assert_equal flash[:notice], "Tu producto se ha eliminado correctamente"
   end
@@ -93,5 +93,13 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :success
     assert_select ".product", 1
+  end
+
+  test "render a list of products filtered by min_price and max_price" do
+    get products_path(min_price: 160, max_price: 200)
+
+    assert_response :success
+    assert_select ".product", 2
+    assert_select "h2", "Nintendo Switch"
   end
 end

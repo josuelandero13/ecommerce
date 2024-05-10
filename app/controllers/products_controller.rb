@@ -3,6 +3,8 @@ class ProductsController < ApplicationController
     @categories = Category.order(name: :asc).load_async
     @products = Product.with_attached_photo.order(created_at: :desc).load_async
     @products = Product.where(category_id: params[:category_id]) if params[:category_id]
+    @products = Product.where("price >= ?", params[:min_price]) if params[:min_price].present?
+    @products = Product.where("price <= ?", params[:max_price]) if params[:max_price].present?
   end
 
   def show
@@ -50,6 +52,6 @@ class ProductsController < ApplicationController
   def product
     @product = Product.find(
       params[:id]
-    )    
+    )
   end
 end
