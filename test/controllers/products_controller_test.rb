@@ -99,7 +99,31 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     get products_path(min_price: 160, max_price: 200)
 
     assert_response :success
-    assert_select ".product", 2
+    assert_select '.product', 1
     assert_select "h2", "Nintendo Switch"
+  end
+
+  test 'search a product by query_text' do
+    get products_path(query_text: 'Switch')
+
+    assert_response :success
+    assert_select '.product', 1
+    assert_select 'h2', 'Nintendo Switch'
+  end
+
+  test 'sort products by expensive prices first' do
+    get products_path(order_by: 'expensive')
+
+    assert_response :success
+    assert_select '.product', 3
+    assert_select '.products .product:first-child h2', 'Macbook Air'
+  end
+
+  test 'sort products by cheapest prices first' do
+    get products_path(order_by: 'cheapest')
+
+    assert_response :success
+    assert_select '.product', 3
+    assert_select '.products .product:first-child h2', 'PS4 Fat'
   end
 end
