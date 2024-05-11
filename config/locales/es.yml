@@ -1,4 +1,5 @@
 es:
+  app_name: "Compra fácil"
   activerecord:
     models:
       product: Producto

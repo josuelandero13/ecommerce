@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Main class
 class Product < ApplicationRecord
   include PgSearch::Model
 
