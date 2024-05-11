@@ -19,6 +19,8 @@ class User < ApplicationRecord
 
   before_save :downcase_attributes
 
+  has_many :products, dependent: :destroy
+
   private
 
   def downcase_attributes
