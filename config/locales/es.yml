@@ -22,6 +22,7 @@ es:
   common:
     confirm: "¿Estás seguro?"
     back: "Volver"
+    not_logged_in: 'Tienes que hacer login o crearte una cuenta'
   shared:
     header:
       add: "Añadir producto"
@@ -29,6 +30,10 @@ es:
     users:
       create:
         created: 'Tu cuenta se ha creado!'
+    sessions:
+      create:
+        created: 'Bienvenido!'
+        failed: 'Login inválido!'
   products:
     edit:
       title: "Editar producto"
