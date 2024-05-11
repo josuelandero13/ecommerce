@@ -1,5 +1,5 @@
 <%= link_to product_path(product&.id), class: "product",
-    "data-turbo-frame": "_top" do %>
+    "data-turbo-frame": "_top", "data-turbo": "false" do %>
 
   <%=
     image_tag product&.photo, width: 100 if product&.photo.attached?
