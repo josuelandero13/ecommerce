@@ -47,6 +47,9 @@ gem 'pg_search'
 # Pagination
 gem 'pagy', '~> 8.4'
 
+# CSS framework for project design
+gem 'tailwindcss-rails', '~> 2.6'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
