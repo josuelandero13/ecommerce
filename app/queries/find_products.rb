@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Query Object Phattern
-class FindProduct
+class FindProducts
   attr_reader :products
 
   def initialize(products = initial_scope)
@@ -14,6 +14,7 @@ class FindProduct
     scoped = filter_by_min_price(scoped, params[:min_price])
     scoped = filter_by_max_price(scoped, params[:max_price])
     scoped = filter_by_query_text(scoped, params[:query_text])
+    scoped = filter_by_user_id(scoped, params[:user_id])
 
     sort(scoped, params[:order_by])
   end
@@ -46,6 +47,12 @@ class FindProduct
     return scoped unless query_yexy
 
     scoped.search_full_text(query_yexy)
+  end
+
+  def filter_by_user_id(scoped, user_id)
+    return scoped unless user_id.present?
+
+    scoped.where(user_id: user_id)
   end
 
   def sort(scoped, order_by)
