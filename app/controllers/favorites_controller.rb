@@ -3,8 +3,13 @@
 # Controller for product favorites
 class FavoritesController < ApplicationController
   def create
-    Favorite.create(product: product, user: Current.user)
+    product.favorite!
     redirect_to product_path(product)
+  end
+
+  def destroy
+    product.unfavorite!
+    redirect_to product_path(product), status: :see_other
   end
 
   private
