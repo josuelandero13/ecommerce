@@ -1,5 +1,6 @@
 <%= link_to t('.add'), new_product_path,
-  class: "mx-2 text-teal-500 font-bold" if Current.user %>
+  class: "mx-2 text-teal-500 font-bold",
+  data: { turbo_frame: "modal" } if Current.user %>
 
 <%= link_to t('.favorites'), favorites_path,
   class: "mx-2 text-teal-500 font-bold" if Current.user %>
