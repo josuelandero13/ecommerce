@@ -76,6 +76,9 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "selenium-webdriver"
+  gem 'capybara'
+  gem 'selenium-webdriver'
+
+  # Library for stubbing and setting expectations on HTTP requests in Ruby.
+  gem 'webmock'
 end
