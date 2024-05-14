@@ -23,6 +23,7 @@ class Authentication::UsersController < ApplicationController
   def create_redirection_params
     return render :new, status: :unprocessable_entity unless @user.save
 
+    UserMailer.with(user: @user).welcome.deliver_later
     session[:user_id] = @user.id
     redirect_to products_path, notice: t('.created')
   end

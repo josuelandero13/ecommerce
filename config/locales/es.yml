@@ -90,3 +90,7 @@ es:
   favorites:
     index:
       title: 'Mis favoritos'
+  user_mailer:
+    welcome:
+      subject: 'Bienvenido a Compra Facil'
+      welcome_message: 'Hey %{username}, bienvenid@ a Compra Facil. Esperemos que vendas un montón!'
