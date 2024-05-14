@@ -50,6 +50,9 @@ gem 'pagy', '~> 8.4'
 # CSS framework for project design
 gem 'tailwindcss-rails', '~> 2.6'
 
+# Gem Simple, efficient background processing for Ruby.
+gem 'sidekiq', '~> 7.2'
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
