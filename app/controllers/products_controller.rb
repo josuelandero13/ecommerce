@@ -36,9 +36,10 @@ class ProductsController < ApplicationController
   def update
     authorize! product
 
-    return redirect_to products_path, notice: t('.updated') if product.update(product_params)
+    return render :edit, status: :unprocessable_entity unless product.update(product_params)
 
-    render :edit, status: :unprocessable_entity
+    product.broadcast
+    redirect_to products_path, notice: t('.updated')
   end
 
   def destroy
